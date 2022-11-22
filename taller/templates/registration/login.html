@@ -1,0 +1,55 @@
+{% load static %}
+<!doctype html>
+
+<!-- Representa la raíz de un documento HTML o XHTML. Todos los demás elementos deben ser descendientes de este elemento. -->
+<html lang="es">
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
+</style>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'loginstyle.css' %}">
+
+    <title> Inicio Sesion</title>
+
+</head>
+
+<body>
+    <div id="contenedor">
+        <div id="contenedorcentrado">
+            <div id="login">
+                <p> Iniciar Sesion</p>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <label for="usuario">
+                        Usuario
+                        <input id="usuario" type="text" name="username" placeholder="Usuario" required>
+                    </label>
+
+                    <label for="pass">
+                        Contraseña
+                        <input id="password" type="password" name="password" placeholder="Contraseña" required>
+                    </label>
+                    <button type="submit" title="Ingresar" name="Ingresar">Inicio Sesion</button>
+
+            </div>
+            <div id="derecho">
+
+                <hr>
+                <div class="pie-form">
+                    <a href="#">¿Perdiste tu contraseña?</a>
+                    <a href="#">¿No tienes Cuenta? Registrate</a>
+                    <hr>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block titulo %} Datos de Moto {% endblock %} 
+
+{% block contenido %} 
+
+
+
+<div class="card">
+    <div class="card-header">
+        Informacion de {{ Moto.patente }}
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Detalles</h4>
+        <hr>
+        <div>
+
+            <a>
+                Cliente: {{ Moto.cliente }}
+                <br><br>
+                Vehiculo: {{ Moto.patente }}
+                <br><br>
+                Telefono: {{ Moto.telefono }}
+                <br><br>
+
+             
+
+                
+
+
+            </a>
+            
+
+        </div>
+        
+    </div>
+    <div class="card-footer text-muted">
+        
+    </div>
+</div>
+
+{% endblock %}

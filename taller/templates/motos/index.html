@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block titulo %} Lista de Motos {% endblock %}
+
+{% block contenido %}
+
+<style>
+    .dere {
+        float: right;
+        padding: 10px;
+        padding-right: 10px;
+    }
+
+
+    .tamaño {
+        width: 70px;
+        height: 35px;
+    }
+</style>
+
+<div class="card">
+    <div class="card-header">
+        <a name="" id="" class="btn btn-success" href="{% url 'crear' %}" role="button">Agregar nueva Moto</a>
+
+        {% block buscador %}
+        <form class="dere d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-md-0 mw-100 navbar-search"
+            method="GET" action="motos/busqueda ">
+            {% csrf_token %}
+            <div class="input-group">
+                <input type="text" class="form-control bg-light border-2 small tamaño" placeholder="Buscar..."
+                    name="buscar" id="buscador">
+                <div class="input-group-append">
+                    <button class="btn gradient" type="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </form>
+        {% endblock %}
+
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Motos</h4>
+
+        <div class="table-responsive">
+            <table class="table table-primary">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Patente</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Vehiculo</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for moto in motos %}
+
+                    <tr class="">
+                        <td>{{ moto.id }}</td>
+                        <td>{{ moto.patente }}</td>
+                        <td>{{ moto.cliente }}</td>
+                        <td>{{ moto.vehiculo }}</td>
+                        <td>
+                            <a name="" id="" class="btn btn-primary" href="{% url 'detalles' moto.id %}"
+                                role="button">Detalles</a>
+                            |
+                            <a name="" id="" class="btn btn-info" href="{% url 'editar' moto.id %}"
+                                role="button">Editar</a>
+                            |
+                            <a name="" id="" class="btn btn-danger" href="{% url 'eliminar' moto.id %}"
+                                role="button">Borrar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+    <div class="card-footer text-muted">
+
+    </div>
+</div>
+
+{% endblock %}
